@@ -2,22 +2,24 @@
 
 namespace Phony;
 
+use RuntimeException;
+
 /**
  * Class Phony.
  *
  *
- * @property Phony\Fake\Standard\Address        address
- * @property Phony\Fake\Standard\Address        📫
- * @property Phony\Fake\Standard\Alphabet       alphabet
- * @property Phony\Fake\Standard\Alphabet       🔤
- * @property Phony\Fake\Standard\Ancient        ancient
- * @property Phony\Fake\Standard\Ancient        📜
- * @property Phony\Fake\Standard\Artist         artist
- * @property Phony\Fake\Standard\Coin           coin
- * @property Phony\Fake\Standard\Cosmere        cosmere
- * @property Phony\Fake\Standard\Currency       currency
- * @property Phony\Fake\Standard\Person         person
- * @property Phony\Fake\Standard\SlackEmoji     slack_emoji
+ * @property \Phony\Fake\Standard\Address        address
+ * @property \Phony\Fake\Standard\Address        📫
+ * @property \Phony\Fake\Standard\Alphabet       alphabet
+ * @property \Phony\Fake\Standard\Alphabet       🔤
+ * @property \Phony\Fake\Standard\Ancient        ancient
+ * @property \Phony\Fake\Standard\Ancient        📜
+ * @property \Phony\Fake\Standard\Artist         artist
+ * @property \Phony\Fake\Standard\Coin           coin
+ * @property \Phony\Fake\Standard\Cosmere        cosmere
+ * @property \Phony\Fake\Standard\Currency       currency
+ * @property \Phony\Fake\Standard\Person         person
+ * @property \Phony\Fake\Standard\SlackEmoji     slack_emoji
  */
 class Phony
 {
@@ -61,7 +63,7 @@ class Phony
             return $this->instances[$attribute];
         }
 
-        throw new \RuntimeException("The {$attribute} fake is not found!");
+        throw new RuntimeException("The {$attribute} fake is not found!");
     }
 
     /**
@@ -72,7 +74,7 @@ class Phony
      */
     public function __set($attribute, $value)
     {
-        throw new \RuntimeException('Setting fakes is not allowed!');
+        throw new RuntimeException('Setting fakes is not allowed!');
     }
 
     /**
