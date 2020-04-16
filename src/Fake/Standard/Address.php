@@ -199,7 +199,7 @@ class Address extends Fake
     ): array {
         return [
             $this->latitude($precision, $minLatitude, $maxLatitude),
-            $this->longitude($precision, $minLongitude, $maxLongitude)
+            $this->longitude($precision, $minLongitude, $maxLongitude),
         ];
     }
 }
