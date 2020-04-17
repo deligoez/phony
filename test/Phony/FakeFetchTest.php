@@ -17,6 +17,9 @@ class FakeFetchTest extends BaseTest
 
         $this->fetch = new ReflectionMethod(Fake::class, 'fetch');
         $this->fetch->setAccessible(true);
+
+        $this->fetchMany = new ReflectionMethod(Fake::class, 'fetchMany');
+        $this->fetchMany->setAccessible(true);
     }
 
     /** @test */
