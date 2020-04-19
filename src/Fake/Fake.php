@@ -191,7 +191,6 @@ class Fake
      * Returns a random number between 1 and 9.
      *
      * @return int
-     *
      */
     protected function randomDigitNotNull(): int
     {

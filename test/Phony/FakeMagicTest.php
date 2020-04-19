@@ -22,12 +22,10 @@ class FakeMagicTest extends BaseTest
      *
      * @noinspection UnknownInspectionInspection
      * @noinspection Annotator
-     *
      */
     public function can_not_set_a_magic_attribute(): void
     {
         $this->expectException(RuntimeException::class);
-
 
         $this->🙃->alphabet->uppercase_letter = 'can-not';
     }
