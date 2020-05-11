@@ -60,5 +60,4 @@ class NumberTest extends BaseTest
         $value = $this->🙃->number->digitNonZero();
         $this->assertNotEquals(0, $value);
     }
-
 }

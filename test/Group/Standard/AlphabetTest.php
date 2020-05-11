@@ -27,7 +27,7 @@ class AlphabetTest extends BaseTest
     /** @test */
     public function letter_attribute(): void
     {
-       $value = $this->🙃->alphabet->letter;
+        $value = $this->🙃->alphabet->letter;
 
         $this->assertEquals(1, mb_strlen($value, 'utf8'));
     }
@@ -55,7 +55,7 @@ class AlphabetTest extends BaseTest
     /** @test */
     public function ascii_lowercase_letter_method(): void
     {
-       $value = $this->🙃->alphabet->ascii_lowercase_letter();
+        $value = $this->🙃->alphabet->ascii_lowercase_letter();
 
         $this->assertEquals(1, mb_strlen($value, 'utf8'));
     }

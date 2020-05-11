@@ -7,7 +7,6 @@ use Phony\Fake\Fake;
 
 /**
  * Class Number.
- *
  */
 class Number extends Fake
 {
@@ -199,6 +198,7 @@ class Number extends Fake
     }
 
     // TODO: Move to Alphabet
+
     /**
      * Returns a random hex letter between 0 and f.
      *
