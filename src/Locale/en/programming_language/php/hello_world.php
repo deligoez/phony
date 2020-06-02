@@ -1,7 +1,7 @@
 <?php
 
 return [
-    <<<EOT
+    <<<'EOT'
     <?php
     
     echo 'Hello World';
