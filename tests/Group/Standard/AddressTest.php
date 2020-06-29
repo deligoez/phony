@@ -9,9 +9,9 @@ test('city attribute', function () {
 
     $rules = regex()
         ->startsWith()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->whitespace()->neverOrMore()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->mustEnd();
 
     assertRulesMatching($rules, $value);
@@ -26,14 +26,14 @@ test('city_with_state attribute', function () {
             $query->anyOf(function (SRL\Builder $query) {
                 $query->anyCharacter()
                       ->oneOf("'");
-            })->oneOf(" ");
+            })->oneOf(' ');
         })->onceOrMore()
         ->literally(', ')
         ->anyOf(function (SRL\Builder $query) {
             $query->anyOf(function (SRL\Builder $query) {
                 $query->anyCharacter()
                       ->oneOf("'");
-            })->oneOf(" ");
+            })->oneOf(' ');
         })->onceOrMore()
           ->mustEnd();
 
@@ -45,7 +45,7 @@ test('street_name attribute', function () {
 
     $rules = regex()
         ->startsWith()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->whitespace()
         ->anyCharacter()->onceOrMore()
         ->mustEnd();
@@ -58,7 +58,7 @@ test('secondary_address attribute', function () {
 
     $rules = regex()
         ->startsWith()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->literally('.')->neverOrMore()
         ->whitespace()
         ->digit()->onceOrMore()
@@ -74,7 +74,7 @@ test('street_address attribute', function () {
         ->startsWith()
         ->digit()->onceOrMore()
         ->whitespace()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->whitespace()
         ->anyCharacter()->onceOrMore()
         ->mustEnd();
@@ -89,11 +89,11 @@ test('street_address_with_secondary_address attribute', function () {
         ->startsWith()
         ->digit()->onceOrMore()
         ->whitespace()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->whitespace()
         ->anyCharacter()->onceOrMore()
         ->whitespace()
-        ->anyOf(fn(Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
+        ->anyOf(fn (Builder $query) => $query->anyCharacter()->oneOf("'"))->onceOrMore()
         ->literally('.')->neverOrMore()
         ->whitespace()
         ->digit()->onceOrMore()
@@ -146,7 +146,7 @@ test('time_zone attribute', function () {
         ->anyCharacter()->onceOrMore()
         ->literally('/')
         ->anyCharacter()->onceOrMore()
-        ->anyOf(fn(Builder $query) => $query->literally('/')->anyCharacter())->neverOrMore()
+        ->anyOf(fn (Builder $query) => $query->literally('/')->anyCharacter())->neverOrMore()
         ->mustEnd();
 
     assertRulesMatching($rules, $value);
