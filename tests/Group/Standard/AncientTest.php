@@ -5,25 +5,25 @@
 test('god attribute', function () {
     $value = 🙃()->ancient->god;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('primordial attribute', function () {
     $value = 🙃()->ancient->primordial;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('titan attribute', function () {
     $value = 🙃()->ancient->titan;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('hero attribute', function () {
     $value = 🙃()->ancient->hero;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 // endregion

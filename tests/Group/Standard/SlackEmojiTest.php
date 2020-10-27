@@ -9,55 +9,55 @@ beforeEach(function () {
 test('people attribute', function () {
     $value = 🙃()->slack_emoji->people;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('nature attribute', function () {
     $value = 🙃()->slack_emoji->nature;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('food_and_drink attribute', function () {
     $value = 🙃()->slack_emoji->food_and_drink;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('celebration attribute', function () {
     $value = 🙃()->slack_emoji->celebration;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('activity attribute', function () {
     $value = 🙃()->slack_emoji->activity;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('travel_and_place attribute', function () {
     $value = 🙃()->slack_emoji->travel_and_place;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('object_and_symbol attribute', function () {
     $value = 🙃()->slack_emoji->object_and_symbol;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('custom attribute', function () {
     $value = 🙃()->slack_emoji->custom;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 test('emoji attribute', function () {
     $value = 🙃()->slack_emoji->emoji;
 
-    $this->assertMatchesRegularExpression($this->regex, $value);
+    expect($value)->toMatch($this->regex);
 });
 
 // endregion

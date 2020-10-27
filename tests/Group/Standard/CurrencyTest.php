@@ -5,19 +5,19 @@
 test('name attribute', function () {
     $value = 🙃()->currency->name;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('code attribute', function () {
     $value = 🙃()->currency->code;
 
-    $this->assertMatchesRegularExpression('/[A-Z]{3}/', $value);
+    expect($value)->toMatch('/[A-Z]{3}/');
 });
 
 test('symbol attribute', function () {
     $value = 🙃()->currency->symbol;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 // endregion

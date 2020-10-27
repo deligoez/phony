@@ -9,13 +9,9 @@ it('can not set a magic attribute', function () {
 })->throws(RuntimeException::class);
 
 it('can check existence with magic isset', function () {
-    $this->assertTrue(
-        isset(🙃()->alphabet->uppercase_letter)
-    );
+    expect(isset(🙃()->alphabet->uppercase_letter))->toBeTrue();
 
-    $this->assertFalse(
-        isset(🙃()->alphabet->not_exist)
-    );
+    expect(isset(🙃()->alphabet->not_exist))->toBeFalse();
 });
 
 it('can not access undefined magic method', function () {

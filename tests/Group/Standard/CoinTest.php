@@ -5,13 +5,13 @@
 test('flip attribute', function () {
     $value = 🙃()->coin->flip;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('name attribute', function () {
     $value = 🙃()->coin->name;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 // endregion

@@ -5,7 +5,7 @@
 test('flip attribute', function () {
     $value = 🙃('tr')->coin->flip;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 // endregion

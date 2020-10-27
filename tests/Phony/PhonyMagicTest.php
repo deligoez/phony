@@ -3,7 +3,7 @@
 test('it can access through magic attribute', function () {
     $value = 🙃()->alphabet;
 
-    assertTrue(! empty($value));
+    expect($value)->not()->toBeEmpty();
 });
 
 it('can not access undefined magic attribute', function () {
@@ -15,6 +15,6 @@ it('can not set a magic attribute', function () {
 })->throws(RuntimeException::class);
 
 it('can check existence with magic isset', function () {
-    $this->assertTrue(isset(🙃()->alphabet));
-    $this->assertFalse(isset(🙃()->not_exist));
+    expect(isset(🙃()->alphabet))->toBeTrue();
+    expect(isset(🙃()->not_exist))->toBeFalse();
 });

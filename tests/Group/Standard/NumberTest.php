@@ -5,21 +5,19 @@
 test('integerBetween() method returns an integer value', function () {
     $value = 🙃()->number->integerBetween();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerBetween() method returns an integer between $min and $max', function () {
     $value = 🙃()->number->integerBetween(1, 100);
 
-    $this->assertGreaterThanOrEqual(1, $value);
-    $this->assertLessThanOrEqual(100, $value);
+    expect($value)->toBeGreaterThanOrEqual(1);
+    expect($value)->toBeLessThanOrEqual(100);
 });
 
 test('integerBetween() method returns error if $min > $max', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerBetween(2, 1);
-});
+})->throws(Error::class);
 
 // endregion
 
@@ -28,27 +26,23 @@ test('integerBetween() method returns error if $min > $max', function () {
 test('integerWithin() method returns an integer value', function () {
     $value = 🙃()->number->integerWithin();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerWithin() method returns an integer that the boundaries not included', function () {
     $value = 🙃()->number->integerWithin(1, 100);
 
-    $this->assertGreaterThanOrEqual(2, $value);
-    $this->assertLessThanOrEqual(99, $value);
+    expect($value)->toBeGreaterThanOrEqual(2);
+    expect($value)->toBeLessThanOrEqual(99);
 });
 
 test('integerWithin() method returns error if $min > $max', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerWithin(2, 1);
-});
+})->throws(Error::class);
 
 test('integerWithin() method returns error if $min === $max', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerWithin(1, 1);
-});
+})->throws(Error::class);
 
 // endregion
 
@@ -57,26 +51,22 @@ test('integerWithin() method returns error if $min === $max', function () {
 test('integerPositive() method returns an integer value', function () {
     $value = 🙃()->number->integerPositive();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerPositive() method returns a positive integer', function () {
     $value = 🙃()->number->integerPositive();
 
-    $this->assertGreaterThanOrEqual(1, $value);
+    expect($value)->toBeGreaterThanOrEqual(1);
 });
 
 test('integerPositive() method returns error if $min is not positive', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerPositive(-1);
-});
+})->throws(Error::class);
 
 test('integerPositive() method returns error if $min=0', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerPositive(0);
-});
+})->throws(Error::class);
 
 // endregion
 
@@ -85,26 +75,22 @@ test('integerPositive() method returns error if $min=0', function () {
 test('integerNegative() method returns an integer value', function () {
     $value = 🙃()->number->integerNegative();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerNegative() method returns a negative integer', function () {
     $value = 🙃()->number->integerNegative();
 
-    $this->assertLessThanOrEqual(-1, $value);
+    expect($value)->toBeLessThanOrEqual(-1);
 });
 
 test('integerNegative() method returns error if $max is not negative', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerNegative(1);
-});
+})->throws(Error::class);
 
 test('integerNegative() method returns error if $max=0', function () {
-    $this->expectException(Error::class);
-
     🙃()->number->integerNegative(0);
-});
+})->throws(Error::class);
 
 // endregion
 
@@ -113,29 +99,29 @@ test('integerNegative() method returns error if $max=0', function () {
 test('integer() method returns an integer value', function () {
     $value = 🙃()->number->integer();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integer() method returns an integer with the given number of $digits', function () {
-    $digits = random_int(1, 15);
-    $value = 🙃()->number->integer($digits);
+    $numberOfDigits = random_int(1, 15);
+    $value = 🙃()->number->integer($numberOfDigits);
 
-    $this->assertLessThanOrEqual($digits, strlen((string) abs($value)));
+    expect(strlen((string) abs($value)))->toBeLessThanOrEqual($numberOfDigits);
 });
 
 test('integer() method returns an integer with exactly the given number of $digits', function () {
-    $digits = random_int(1, 15);
-    $value = 🙃()->number->integer($digits, true);
+    $numberOfDigits = random_int(1, 15);
+    $value = 🙃()->number->integer($numberOfDigits, true);
 
-    $this->assertEquals($digits, strlen((string) abs($value)));
+    expect(strlen((string) abs($value)))->toBeLessThanOrEqual($numberOfDigits);
 });
 
 test('integer() method returns a positive or negative integers', function () {
     $value = 🙃()->number->integer(1, true, true);
-    $this->assertGreaterThan(0, $value);
+    expect($value)->toBeGreaterThan(0);
 
     $value = 🙃()->number->integer(1, true, false);
-    $this->assertLessThan(0, $value);
+    expect($value)->toBeLessThan(0);
 });
 
 // endregion
@@ -145,13 +131,13 @@ test('integer() method returns a positive or negative integers', function () {
 test('integerLeadingZero() method returns a string value', function () {
     $value = 🙃()->number->integerLeadingZero();
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('integerLeadingZero() method returns a string leading with zeros', function () {
     $value = 🙃()->number->integerLeadingZero(10);
 
-    $this->assertMatchesRegularExpression('/^^(0{0,10}[0-9]{0,10}){1}$/', $value);
+    expect($value)->toMatch('/^^(0{0,10}[0-9]{0,10}){1}$/');
 });
 
 // endregion
@@ -161,7 +147,7 @@ test('integerLeadingZero() method returns a string leading with zeros', function
 test('integerNormal() method returns an integer value', function () {
     $value = 🙃()->number->integerNormal();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerNormal() method calculates integers with standard deviation', function () {
@@ -174,14 +160,16 @@ test('integerNormal() method calculates integers with standard deviation', funct
 
     $mean = array_sum($values) / (float) $n;
 
-    $variance = array_reduce($values, function ($variance, $item) use ($mean) {
-        return $variance += ($item - $mean) ** 2;
-    }, 0) / (float) ($n - 1);
+    $variance = array_reduce(
+            $values, static function ($variance, $item) use ($mean) {
+            return $variance + ($item - $mean) ** 2;
+        }, 0
+        ) / (float) ($n - 1);
 
     $std_dev = sqrt($variance);
 
-    $this->assertEqualsWithDelta(150, $mean, 5);
-    $this->assertEqualsWithDelta(100, $std_dev, 3);
+    expect($mean)->toEqualWithDelta(150, 5);
+    expect($std_dev)->toEqualWithDelta(100, 3);
 });
 
 // endregion
@@ -191,26 +179,24 @@ test('integerNormal() method calculates integers with standard deviation', funct
 test('integerExcept() method returns an integer value', function () {
     $value = 🙃()->number->integerExcept();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('integerExcept() method returns an integer except the given integer', function () {
     $value = 🙃()->number->integerExcept(2, 1, 2);
 
-    $this->assertEquals(1, $value);
+    expect($value)->toBe(1);
 });
 
 test('integerExcept() method returns an integer except the given array of integers', function () {
     $value = 🙃()->number->integerExcept([1, 2, 3, 4], 1, 5);
 
-    $this->assertEquals(5, $value);
+    expect($value)->toBe(5);
 });
 
 test('integerExcept() method throws a RangeException if there are not enough integers', function () {
-    $this->expectException(RangeException::class);
-
     🙃()->number->integerExcept([1, 2, 3, 4, 5], 1, 5);
-});
+})->throws(RangeException::class);
 
 // endregion
 
@@ -219,27 +205,27 @@ test('integerExcept() method throws a RangeException if there are not enough int
 test('digit() method returns an integer value', function () {
     $value = 🙃()->number->digit();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('digit() method returns a digit', function () {
     $value = 🙃()->number->digit();
 
-    $this->assertGreaterThanOrEqual(0, $value);
-    $this->assertLessThanOrEqual(9, $value);
+    expect($value)->toBeGreaterThanOrEqual(0);
+    expect($value)->toBeLessThanOrEqual(9);
 });
 
 test('digit() method returns a digit for the given $base', function () {
     $valueBase2 = 🙃()->number->digit(2);
 
-    $this->assertGreaterThanOrEqual(0, $valueBase2);
-    $this->assertLessThan(2, $valueBase2);
+    expect($valueBase2)->toBeGreaterThanOrEqual(0);
+    expect($valueBase2)->toBeLessThanOrEqual(2);
 
     $base = random_int(2, 99);
     $value = 🙃()->number->digit($base);
 
-    $this->assertGreaterThanOrEqual(0, $value);
-    $this->assertLessThan($base, $value);
+    expect($value)->toBeGreaterThanOrEqual(0);
+    expect($value)->toBeLessThanOrEqual($base);
 });
 
 // endregion
@@ -249,18 +235,18 @@ test('digit() method returns a digit for the given $base', function () {
 test('digitExcept() method returns an integer value', function () {
     $value = 🙃()->number->digitExcept();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('digitExcept() method returns a digit except given digit', function () {
     $value = 🙃()->number->digitExcept(1, 2);
-    $this->assertNotEquals(1, $value);
+    expect($value)->not()->toBe(1);
 
     $value = 🙃()->number->digitExcept(0, 2);
-    $this->assertNotEquals(0, $value);
+    expect($value)->not()->toBe(0);
 
     $value = 🙃()->number->digitExcept(1, 2);
-    $this->assertNotEquals(1, $value);
+    expect($value)->not()->toBe(1);
 });
 
 // endregion
@@ -270,15 +256,15 @@ test('digitExcept() method returns a digit except given digit', function () {
 test('digitNonZero() method returns an integer value', function () {
     $value = 🙃()->number->digitNonZero();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 test('digitNonZero() method returns a digit that is not zero', function () {
     $value = 🙃()->number->digitNonZero(2);
-    $this->assertEquals(1, $value);
+    expect($value)->toBe(1);
 
     $value = 🙃()->number->digitNonZero();
-    $this->assertNotEquals(0, $value);
+    expect($value)->not()->toBe(0);
 });
 
 // endregion
@@ -288,21 +274,21 @@ test('digitNonZero() method returns a digit that is not zero', function () {
 test('floatBetween() method returns a float value', function () {
     $value = 🙃()->number->floatBetween();
 
-    $this->assertIsFloat($value);
+    expect($value)->toBeFloat();
 });
 
 test('floatBetween() method returns a float between $min and $max', function () {
     $value = 🙃()->number->floatBetween(0.0, 1.0);
 
-    $this->assertGreaterThanOrEqual(0, $value);
-    $this->assertLessThanOrEqual(1, $value);
+    expect($value)->toBeGreaterThanOrEqual(0);
+    expect($value)->toBeLessThanOrEqual(1);
 });
 
 test('floatBetween() method returns a float with given $precision', function () {
     $precision = random_int(0, 14);
     $value = 🙃()->number->floatBetween(0.0, 1.0, $precision);
 
-    $this->assertLessThanOrEqual($precision + 2, strlen($value));
+    expect(strlen($value))->toBeLessThanOrEqual($precision + 2);
 });
 
 // endregion
@@ -312,26 +298,26 @@ test('floatBetween() method returns a float with given $precision', function () 
 test('floatPositive() method returns a float value', function () {
     $value = 🙃()->number->floatPositive();
 
-    $this->assertIsFloat($value);
+    expect($value)->toBeFloat();
 });
 
 test('floatPositive() method returns a positive float', function () {
     $value = 🙃()->number->floatPositive();
 
-    $this->assertGreaterThanOrEqual(0, $value);
+    expect($value)->toBeGreaterThanOrEqual(0);
 });
 
 test('floatPositive() method returns zero if $max=0', function () {
     $value = 🙃()->number->floatPositive(0);
 
-    $this->assertEquals(0, $value);
+    expect($value)->toBe(0.0);
 });
 
 test('floatPositive() method returns a float with given $precision', function () {
     $precision = random_int(0, 14);
     $value = 🙃()->number->floatPositive(1, $precision);
 
-    $this->assertLessThanOrEqual($precision + 2, strlen($value));
+    expect($precision)->toBeLessThanOrEqual(strlen($value));
 });
 
 // endregion
@@ -341,20 +327,20 @@ test('floatPositive() method returns a float with given $precision', function ()
 test('floatNegative() method returns a float value', function () {
     $value = 🙃()->number->floatNegative();
 
-    $this->assertIsFloat($value);
+    expect($value)->toBeFloat();
 });
 
 test('floatNegative() method returns a negative float', function () {
     $value = 🙃()->number->floatNegative();
 
-    $this->assertLessThan(0, $value);
+    expect($value)->toBeLessThan(0);
 });
 
 test('floatNegative() method returns a float with given $precision', function () {
     $precision = random_int(0, 14);
     $value = 🙃()->number->floatNegative(-1, $precision);
 
-    $this->assertLessThanOrEqual($precision + 3, strlen($value));
+    expect(strlen($value))->toBeLessThanOrEqual($precision + 3);
 });
 
 // endregion
@@ -364,21 +350,21 @@ test('floatNegative() method returns a float with given $precision', function ()
 test('float() method returns a float value', function () {
     $value = 🙃()->number->float();
 
-    $this->assertIsFloat($value);
+    expect($value)->toBeFloat();
 });
 
 test('float() method left digit can be strictly set', function () {
     $leftDigits = random_int(1, 10);
     $value = 🙃()->number->float($leftDigits, 0, true);
 
-    $this->assertEquals($leftDigits, strlen($value));
+    expect(strlen($value))->toBe($leftDigits);
 });
 
 test('float() method right digit can be strictly set', function () {
     $rightDigits = random_int(1, 14);
     $value = 🙃()->number->float(1, $rightDigits, true);
 
-    $this->assertLessThanOrEqual($rightDigits + 2, strlen($value));
+    expect(strlen($value))->toBeLessThanOrEqual($rightDigits + 2);
 });
 
 // endregion
@@ -388,7 +374,7 @@ test('float() method right digit can be strictly set', function () {
 test('floatNormal() method returns a float', function () {
     $value = 🙃()->number->floatNormal();
 
-    $this->assertIsFloat($value);
+    expect($value)->toBeFloat();
 });
 
 test('floatNormal() method calculates floats with standard deviation', function () {
@@ -401,14 +387,14 @@ test('floatNormal() method calculates floats with standard deviation', function 
 
     $mean = array_sum($values) / (float) $n;
 
-    $variance = array_reduce($values, function ($variance, $item) use ($mean) {
-        return $variance += ($item - $mean) ** 2;
-    }, 0) / (float) ($n - 1);
+    $variance = array_reduce(
+        $values, static fn($variance, $item) => $variance + ($item - $mean) ** 2, 0
+        ) / (float) ($n - 1);
 
     $std_dev = sqrt($variance);
 
-    $this->assertEqualsWithDelta(150, $mean, 5);
-    $this->assertEqualsWithDelta(100, $std_dev, 3);
+    expect($mean)->toEqualWithDelta(150, 5);
+    expect($std_dev)->toEqualWithDelta(100, 3);
 });
 
 // endregion
@@ -418,7 +404,7 @@ test('floatNormal() method calculates floats with standard deviation', function 
 test('possibleIntegersCount() method', function (int $min, int $max, int $expected) {
     $possibilities = callPrivateMethod(🙃()->number, 'possibleIntegersCount', $min, $max);
 
-    $this->assertEquals($expected, $possibilities);
+    expect($possibilities)->toBe($expected);
 })->with([
     [1, 5, 5],
     [0, 5, 6],
@@ -432,7 +418,7 @@ test('possibleIntegersCount() method', function (int $min, int $max, int $expect
 test('possibleIntegersCount() method swaps $min and $max if necessary', function () {
     $possibilities = callPrivateMethod(🙃()->number, 'possibleIntegersCount', 5, 1);
 
-    $this->assertEquals(5, $possibilities);
+    expect($possibilities)->toBe(5);
 });
 
 // endregion

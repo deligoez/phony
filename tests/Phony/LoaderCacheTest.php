@@ -3,16 +3,13 @@
 it('can get cache size', function () {
     $value = 🙃()->getCacheSize();
 
-    $this->assertIsInt($value);
+    expect($value)->toBeInt();
 });
 
 it('can set cache size', function () {
     $🙃 = 🙃()->setCacheSize(1000000);
 
-    $this->assertEquals(
-        1000000,
-        $🙃->getCacheSize()
-    );
+    expect($🙃->getCacheSize())->toBe(1000000);
 });
 
 it('does not cache if size exceed', function () {
@@ -21,10 +18,7 @@ it('does not cache if size exceed', function () {
     $🙃->alphabet->uppercase_letter;
     $🙃->alphabet->lowercase_letter;
 
-    $this->assertEquals(
-        0,
-        $🙃->getCacheUsage()
-    );
+    expect($🙃->getCacheUsage())->toBe(0);
 });
 
 it('does not cache if it will be exceed with the number of new items', function () {
@@ -33,10 +27,7 @@ it('does not cache if it will be exceed with the number of new items', function 
     $🙃->alphabet->uppercase_letter; // Size of 29
     $🙃->alphabet->lowercase_letter; // Size of 29
 
-    $this->assertEquals(
-        29,
-        $🙃->getCacheUsage()
-    );
+    expect($🙃->getCacheUsage())->toBe(29);
 });
 
 test('cache size can be dynamically increase', function () {
@@ -44,17 +35,11 @@ test('cache size can be dynamically increase', function () {
 
     $🙃->alphabet->uppercase_letter; // Size of 29
 
-    $this->assertEquals(
-        0,
-        $🙃->getCacheUsage()
-    );
+    expect($🙃->getCacheUsage())->toBe(0);
 
     $🙃 = 🙃()->setCacheSize(29);
 
     $🙃->alphabet->uppercase_letter; // Size of 29
 
-    $this->assertEquals(
-        29,
-        $🙃->getCacheUsage()
-    );
+    expect($🙃->getCacheUsage())->toBe(29);
 });

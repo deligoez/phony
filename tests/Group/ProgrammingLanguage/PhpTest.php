@@ -5,13 +5,13 @@
 test('extension attribute', function () {
     $value = 🙃()->programming_language->php->extension;
 
-    assertEquals(3, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(3);
 });
 
 test('hello_world attribute', function () {
     $value = 🙃()->programming_language->php->hello_world;
 
-    $this->assertNotEmpty($value);
+    expect($value)->not()->toBeEmpty();
 });
 
 // endregion

@@ -5,7 +5,7 @@
 test('boolean attribute', function () {
     $value = 🙃()->boolean->boolean;
 
-    $this->assertIsBool($value);
+    expect($value)->toBeBool();
 });
 
 // endregion
@@ -15,19 +15,19 @@ test('boolean attribute', function () {
 test('boolean() method returns a boolean value', function () {
     $value = 🙃()->boolean->boolean();
 
-    $this->assertIsBool($value);
+    expect($value)->toBeBool();
 });
 
 test('boolean() method with $truePercentage=100 returns always true', function () {
     $value = 🙃()->boolean->boolean(100);
 
-    $this->assertTrue($value);
+    expect($value)->toBeTrue();
 });
 
 test('boolean() method with $truePercentage=0 returns always false', function () {
     $value = 🙃()->boolean->boolean(0);
 
-    $this->assertFalse($value);
+    expect($value)->toBeFalse();
 });
 
 // endregion

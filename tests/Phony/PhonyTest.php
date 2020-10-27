@@ -3,13 +3,13 @@
 use Phonyland\Fake\Fake;
 
 test('can_call_by_an_alias', function () {
-    $this->assertInstanceOf(Fake::class, 🙃()->address);
-    $this->assertInstanceOf(Fake::class, 🙃()->📫);
-    $this->assertInstanceOf(Fake::class, 🙃()->alphabet);
-    $this->assertInstanceOf(Fake::class, 🙃()->🔤);
-    $this->assertInstanceOf(Fake::class, 🙃()->ancient);
-    $this->assertInstanceOf(Fake::class, 🙃()->📜);
-    $this->assertInstanceOf(Fake::class, 🙃()->person);
-    $this->assertInstanceOf(Fake::class, 🙃()->coin);
-    $this->assertInstanceOf(Fake::class, 🙃()->currency);
+    expect(🙃()->address)->toBeInstanceOf(Fake::class);
+    expect(🙃()->📫)->toBeInstanceOf(Fake::class);
+    expect(🙃()->alphabet)->toBeInstanceOf(Fake::class);
+    expect(🙃()->🔤)->toBeInstanceOf(Fake::class);
+    expect(🙃()->ancient)->toBeInstanceOf(Fake::class);
+    expect(🙃()->📜)->toBeInstanceOf(Fake::class);
+    expect(🙃()->person)->toBeInstanceOf(Fake::class);
+    expect(🙃()->coin)->toBeInstanceOf(Fake::class);
+    expect(🙃()->currency)->toBeInstanceOf(Fake::class);
 });

@@ -5,26 +5,27 @@
 test('uppercase_letter attribute', function () {
     $value = 🙃()->alphabet->uppercase_letter;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('lowercase_letter attribute', function () {
     $value = 🙃()->alphabet->lowercase_letter;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('letter attribute', function () {
     foreach (range(1, 10) as $index) {
         $value = 🙃()->alphabet->letter;
-        $this->assertEquals(1, mb_strlen($value, 'utf8'));
+
+        expect(mb_strlen($value, 'utf8'))->toBe(1);
     }
 });
 
 test('punctuation_mark attribute', function () {
     $value = 🙃()->alphabet->punctuation_mark;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 // endregion
@@ -34,19 +35,19 @@ test('punctuation_mark attribute', function () {
 test('ascii_uppercase_letter() method', function () {
     $value = 🙃()->alphabet->ascii_uppercase_letter();
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('ascii_lowercase_letter() method', function () {
     $value = 🙃()->alphabet->ascii_lowercase_letter();
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('ascii_letter() method', function () {
     $value = 🙃()->alphabet->ascii_letter();
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 // endregion
@@ -56,19 +57,19 @@ test('ascii_letter() method', function () {
 test('ascii_uppercase_letter() method as attribute', function () {
     $value = 🙃()->alphabet->ascii_uppercase_letter;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('ascii_lowercase_letter() method as attribute', function () {
     $value = 🙃()->alphabet->ascii_lowercase_letter;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 test('ascii_letter() method as attribute', function () {
     $value = 🙃()->alphabet->ascii_letter;
 
-    $this->assertEquals(1, mb_strlen($value, 'utf8'));
+    expect(mb_strlen($value, 'utf8'))->toBe(1);
 });
 
 // endregion

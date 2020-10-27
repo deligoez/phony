@@ -5,19 +5,19 @@
 test('male_first_name attribute', function () {
     $value = 🙃('tr')->person->male_first_name;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('female_first_name attribute', function () {
     $value = 🙃('tr')->person->female_first_name;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('last_name attribute', function () {
     $value = 🙃('tr')->person->last_name;
 
-    $this->assertTrue(mb_ereg_match('(\w+\.? ?){3,4}', $value));
+    expect(mb_ereg_match('(\w+\.? ?){3,4}', $value))->toBeTrue();
 });
 
 // endregion
@@ -27,14 +27,14 @@ test('last_name attribute', function () {
 test('initials() method with default length', function () {
     $value = 🙃('tr')->person->initials();
 
-    $this->assertEquals(6, mb_strlen($value, 'utf-8'));
+    expect(mb_strlen($value, 'utf-8'))->toBe(6);
 });
 
 test('initials() method with given length', function () {
     $times = random_int(2, 10);
     $value = 🙃('tr')->person->initials($times);
 
-    $this->assertEquals($times * 2, mb_strlen($value, 'utf-8'));
+    expect(mb_strlen($value, 'utf-8'))->toBe($times * 2);
 });
 
 // endregion

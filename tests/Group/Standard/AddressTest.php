@@ -1,8 +1,8 @@
 <?php
 
-// region Attributes
-
 use SRL\Builder;
+
+// region Attributes
 
 test('city attribute', function () {
     $value = 🙃()->address->city;
@@ -155,61 +155,61 @@ test('time_zone attribute', function () {
 test('street_suffix attribute', function () {
     $value = 🙃()->address->street_suffix;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('city_suffix attribute', function () {
     $value = 🙃()->address->city_suffix;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('city_prefix attribute', function () {
     $value = 🙃()->address->city_prefix;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('state_abbreviation attribute', function () {
     $value = 🙃()->address->state_abbreviation;
 
-    $this->assertMatchesRegularExpression('/[A-Z]{2}/', $value);
+    expect($value)->toMatch('/[A-Z]{2}/');
 });
 
 test('state attribute', function () {
     $value = 🙃()->address->state;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('country attribute', function () {
     $value = 🙃()->address->country;
 
-    $this->assertMatchesRegularExpression('/\w+/', $value);
+    expect($value)->toMatch('/\w+/');
 });
 
 test('country_code attribute', function () {
     $value = 🙃()->address->country_code;
 
-    $this->assertMatchesRegularExpression('/[A-Z]{2}/', $value);
+    expect($value)->toMatch('/[A-Z]{2}/');
 });
 
 test('country_code_long attribute', function () {
     $value = 🙃()->address->country_code_long;
 
-    $this->assertMatchesRegularExpression('/[A-Z]{3}/', $value);
+    expect($value)->toMatch('/[A-Z]{3}/');
 });
 
 test('full_address attribute', function () {
     $value = 🙃()->address->full_address;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('default_country attribute', function () {
     $value = 🙃()->address->default_country;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 // endregion
@@ -219,58 +219,60 @@ test('default_country attribute', function () {
 test('zip_code() method', function () {
     $value = 🙃()->address->zip_code();
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 test('zip_code() method with $stateAbbreviation parameter', function () {
     $value = 🙃()->address->zip_code('CO');
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 test('country_by_code() method', function () {
-    $value = 🙃()->address->country_by_code('NL');
+    $value = 🙃()->address->country_by_code('TR');
+    expect($value)->toBe('Turkey');
 
-    $this->assertEquals('Netherlands', $value);
+    $value = 🙃()->address->country_by_code('DE');
+    expect($value)->toBe('Germany');
 });
 
 test('country_by_name() method', function () {
     $value = 🙃()->address->country_by_name('united_states');
 
-    $this->assertEquals('US', $value);
+    expect($value)->toBe('US');
 });
 
 test('latitude() method returns a float within the range', function () {
     $value = 🙃()->address->latitude();
 
-    $this->assertIsFloat($value);
-    $this->assertGreaterThanOrEqual(-90, $value);
-    $this->assertLessThanOrEqual(90, $value);
+    expect($value)->toBeFloat();
+    expect($value)->toBeGreaterThanOrEqual(-90);
+    expect($value)->toBeLessThanOrEqual(90);
 });
 
 test('longitude() method returns a float within the range', function () {
     $value = 🙃()->address->longitude();
 
-    $this->assertIsFloat($value);
-    $this->assertGreaterThanOrEqual(-180, $value);
-    $this->assertLessThanOrEqual(180, $value);
+    expect($value)->toBeFloat();
+    expect($value)->toBeGreaterThanOrEqual(-180);
+    expect($value)->toBeLessThanOrEqual(180);
 });
 
 test('coordinate() method returns an array with latitude and longitude inside', function () {
     $value = 🙃()->address->coordinate();
 
-    $this->assertIsArray($value);
-    $this->assertCount(2, $value);
+    expect($value)->toBeArray();
+    expect($value)->toHaveCount(2);
 
     // latitude()
-    $this->assertIsFloat($value[0]);
-    $this->assertGreaterThanOrEqual(-90, $value[0]);
-    $this->assertLessThanOrEqual(90, $value[0]);
+    expect($value[0])->toBeFloat();
+    expect($value[0])->toBeGreaterThanOrEqual(-90);
+    expect($value[0])->toBeLessThanOrEqual(90);
 
     // longitude()
-    $this->assertIsFloat($value[1]);
-    $this->assertGreaterThanOrEqual(-180, $value[1]);
-    $this->assertLessThanOrEqual(180, $value[1]);
+    expect($value[1])->toBeFloat();
+    expect($value[1])->toBeGreaterThanOrEqual(-180);
+    expect($value[1])->toBeLessThanOrEqual(180);
 });
 
 // endregion
@@ -280,40 +282,40 @@ test('coordinate() method returns an array with latitude and longitude inside', 
 test('zip_code() method as attribute', function () {
     $value = 🙃()->address->zip_code;
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 test('latitude() method as attribute', function () {
     $value = 🙃()->address->latitude;
 
-    $this->assertIsFloat($value);
-    $this->assertGreaterThanOrEqual(-90, $value);
-    $this->assertLessThanOrEqual(90, $value);
+    expect($value)->toBeFloat();
+    expect($value)->toBeGreaterThanOrEqual(-90);
+    expect($value)->toBeLessThanOrEqual(90);
 });
 
 test('longitude() method as attribute', function () {
     $value = 🙃()->address->longitude;
 
-    $this->assertIsFloat($value);
-    $this->assertGreaterThanOrEqual(-180, $value);
-    $this->assertLessThanOrEqual(180, $value);
+    expect($value)->toBeFloat();
+    expect($value)->toBeGreaterThanOrEqual(-180);
+    expect($value)->toBeLessThanOrEqual(180);
 });
 
 test('coordinate() method as attribute', function () {
     $value = 🙃()->address->coordinate;
 
-    $this->assertIsArray($value);
-    $this->assertCount(2, $value);
+    expect($value)->toBeArray();
+    expect($value)->toHaveCount(2);
 
     // latitude()
-    $this->assertIsFloat($value[0]);
-    $this->assertGreaterThanOrEqual(-90, $value[0]);
-    $this->assertLessThanOrEqual(90, $value[0]);
+    expect($value[0])->toBeFloat();
+    expect($value[0])->toBeGreaterThanOrEqual(-90);
+    expect($value[0])->toBeLessThanOrEqual(90);
 
     // longitude()
-    $this->assertIsFloat($value[1]);
-    $this->assertGreaterThanOrEqual(-180, $value[1]);
-    $this->assertLessThanOrEqual(180, $value[1]);
+    expect($value[1])->toBeFloat();
+    expect($value[1])->toBeGreaterThanOrEqual(-180);
+    expect($value[1])->toBeLessThanOrEqual(180);
 });
 
 // endregion
@@ -323,13 +325,13 @@ test('coordinate() method as attribute', function () {
 test('zip() method alias', function () {
     $value = 🙃()->address->zip();
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 test('postcode() method alias', function () {
     $value = 🙃()->address->postcode();
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 // endregion
@@ -339,13 +341,13 @@ test('postcode() method alias', function () {
 test('zip() method alias as attribute', function () {
     $value = 🙃()->address->zip;
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 test('postcode() method alias as attribute', function () {
     $value = 🙃()->address->postcode;
 
-    $this->assertMatchesRegularExpression('/^\d+-?\d*$/', $value);
+    expect($value)->toMatch('/^\d+-?\d*$/');
 });
 
 // endregion

@@ -14,7 +14,7 @@ function regex(): \SRL\Builder
 
 function assertRulesMatching(\SRL\Builder $rules, string $value)
 {
-    assertTrue($rules->isMatching($value));
+    expect($rules->isMatching($value))->toBeTrue();
 }
 
 function callPrivateFakeMethod($name, ...$args)

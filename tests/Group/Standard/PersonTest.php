@@ -5,55 +5,55 @@
 test('name attribute', function () {
     $value = 🙃()->person->name;
 
-    $this->assertMatchesRegularExpression('/(\w+\.? ?){2,3}/', $value);
+    expect($value)->toMatch('/(\w+\.? ?){2,3}/');
 });
 
 test('name_with_middle attribute', function () {
     $value = 🙃()->person->name_with_middle;
 
-    $this->assertMatchesRegularExpression('/(\w+\.? ?){3,4}/', $value);
+    expect($value)->toMatch('/(\w+\.? ?){3,4}/');
 });
 
 test('first_name attribute', function () {
     $value = 🙃()->person->first_name;
 
-    $this->assertMatchesRegularExpression('/(\w+\.? ?){2,4}/', $value);
+    expect($value)->toMatch('/(\w+\.? ?){2,4}/');
 });
 
 test('middle_name attribute', function () {
     $value = 🙃()->person->middle_name;
 
-    $this->assertMatchesRegularExpression('/(\w+\.? ?){3,4}/', $value);
+    expect($value)->toMatch('/(\w+\.? ?){3,4}/');
 });
 
 test('male_first_name attribute', function () {
     $value = 🙃()->person->male_first_name;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('female_first_name attribute', function () {
     $value = 🙃()->person->female_first_name;
 
-    $this->assertIsString($value);
+    expect($value)->toBeString();
 });
 
 test('last_name attribute', function () {
     $value = 🙃()->person->last_name;
 
-    $this->assertMatchesRegularExpression('/(\w+\.? ?){3,4}/', $value);
+    expect($value)->toMatch('/(\w+\.? ?){3,4}/');
 });
 
 test('prefix attribute', function () {
     $value = 🙃()->person->prefix;
 
-    $this->assertMatchesRegularExpression('/[A-Z][a-z]+\.?/', $value);
+    expect($value)->toMatch('/[A-Z][a-z]+\.?/');
 });
 
 test('suffix attribute', function () {
     $value = 🙃()->person->suffix;
 
-    $this->assertMatchesRegularExpression('/[A-Z][a-z]*\.?/', $value);
+    expect($value)->toMatch('/[A-Z][a-z]*\.?/');
 });
 
 // endregion
@@ -63,13 +63,13 @@ test('suffix attribute', function () {
 test('initials() method with default length', function () {
     $value = 🙃()->person->initials();
 
-    $this->assertEquals(3, strlen($value));
+    expect(strlen($value))->toBe(3);
 });
 
 test('initials() method with given length', function () {
     $value = 🙃()->person->initials($times = random_int(2, 10));
 
-    $this->assertEquals($times, strlen($value));
+    expect(strlen($value))->toBe($times);
 });
 
 // endregion
@@ -79,7 +79,7 @@ test('initials() method with given length', function () {
 test('initials() method as an attribute', function () {
     $value = 🙃()->person->initials;
 
-    $this->assertEquals(3, strlen($value));
+    expect(strlen($value))->toBe(3);
 });
 
 // endregion

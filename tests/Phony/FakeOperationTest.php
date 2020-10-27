@@ -1,15 +1,15 @@
 <?php
 
 it('can numerify with hash sign', function () {
-    $value = (int) callPrivateFakeMethod('numerify', '###');
+    $value = callPrivateFakeMethod('numerify', '###');
 
-    $this->assertMatchesRegularExpression('/^[\d]{0,3}$/', $value);
+    expect($value)->toMatch('/^[\d]{0,3}$/');
 });
 
 it('can hexify with hash sign', function () {
     $value = callPrivateFakeMethod('hexify', '###');
 
-    $this->assertMatchesRegularExpression('/^[a-z0-9]{3}$/', $value);
+    expect($value)->toMatch('/^[a-z0-9]{3}$/');
 });
 
 it('can hexify arrays', function () {
@@ -22,14 +22,14 @@ it('can hexify arrays', function () {
     $result = callPrivateFakeMethod('hexify', $testArray);
 
     foreach ($result as $item) {
-        $this->assertMatchesRegularExpression('/^[a-z0-9]{1,3}$/', $item);
+        expect($item)->toMatch('/^[a-z0-9]{1,3}$/');
     }
 });
 
 it('can numerify with percentage sign', function () {
-    $value = (int) callPrivateFakeMethod('numerify', '%%%');
+    $value = callPrivateFakeMethod('numerify', '%%%');
 
-    $this->assertMatchesRegularExpression('/^[\d]{3}$/', $value);
+    expect($value)->toMatch('/^[\d]{3}$/');
 });
 
 it('can numerify arrays', function () {
@@ -42,14 +42,14 @@ it('can numerify arrays', function () {
     $result = callPrivateFakeMethod('numerify', $testArray);
 
     foreach ($result as $item) {
-        $this->assertMatchesRegularExpression('/^[\d]{1,2}$/', (int) $item);
+        expect($item)->toMatch('/^[\d]{1,2}$/');
     }
 });
 
 it('can letterify', function () {
     $value = callPrivateFakeMethod('letterify', '???');
 
-    $this->assertMatchesRegularExpression('/^[\w]{3}$/', $value);
+    expect($value)->toMatch('/^[\w]{3}$/');
 });
 
 it('can letterify arrays', function () {
@@ -62,20 +62,20 @@ it('can letterify arrays', function () {
     $result = callPrivateFakeMethod('letterify', $testArray);
 
     foreach ($result as $item) {
-        $this->assertMatchesRegularExpression('/^[A-Za-z]{1,3}$/', $item);
+        expect($item)->toMatch('/^[A-Za-z]{1,3}$/');
     }
 });
 
 it('can bothify', function () {
     $value = callPrivateFakeMethod('bothify', '?#%');
 
-    $this->assertMatchesRegularExpression('/^[\w]{3}$/', $value);
+    expect($value)->toMatch('/^[\w]{3}$/');
 });
 
 it('can bothify with asterix', function () {
     $value = callPrivateFakeMethod('bothify', '***');
 
-    $this->assertMatchesRegularExpression('/^[\w]{3}$/', $value);
+    expect($value)->toMatch('/^[\w]{3}$/');
 });
 
 it('can bothify arrays', function () {
@@ -90,6 +90,6 @@ it('can bothify arrays', function () {
     $result = callPrivateFakeMethod('bothify', $testArray);
 
     foreach ($result as $item) {
-        $this->assertMatchesRegularExpression('/^[\w]{1,3}$/', $item);
+        expect($item)->toMatch('/^[\w]{1,3}$/');
     }
 });

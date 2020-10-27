@@ -3,7 +3,7 @@
 it('can fetch a value', function () {
     $value = callPrivateFakeMethod('fetch', 'standard.alphabet.uppercase_letter');
 
-    $this->assertNotNull($value);
+    expect($value)->not()->toBeNull();
 });
 
 it('can fetch many values', function () {
@@ -12,7 +12,7 @@ it('can fetch many values', function () {
         return 'value';
     });
 
-    $this->assertCount($times, $value);
+    expect($value)->toHaveCount($times);
 });
 
 it('can fetch many values as a string', function () {
@@ -21,10 +21,7 @@ it('can fetch many values as a string', function () {
         return 'value';
     });
 
-    $this->assertEquals(
-        $times - 1,
-        substr_count($value, ' ')
-    );
+    expect(substr_count($value, ' '))->toBe($times - 1);
 });
 
 it('can fetch many values as glued string', function () {
@@ -33,8 +30,5 @@ it('can fetch many values as glued string', function () {
         return 'value';
     });
 
-    $this->assertEquals(
-        $times - 1,
-        substr_count($value, '🙃')
-    );
+    expect(substr_count($value, '🙃'))->toBe($times - 1);
 });
